@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import moment from "moment";
 
 function Body({startDay}) {
-    const [currentDate, setCurrenDate] = useState(moment().format("MMM YYYY"))
     const week = [
         "Mon",
         "Tue",
@@ -26,9 +25,9 @@ function Body({startDay}) {
                 }
 
             {
-                calendarArr.map((day, index) => (
+                calendarArr.map((day) => (
                     <div  key={day} className={day.day() === 0 || day.day() === 6 ? "bg-dark elem" : "elem"}>
-                        <span className={day.format("YYYY-MM-DD") === moment().format('YYYY-MM-DD') ? "currentDay": ""}>
+                        <span className={day.clone().format("YYYY-MM-DD") === moment().format('YYYY-MM-DD') ? "currentDay": ""}>
                             {day.format("D")}
                         </span>
                     </div>

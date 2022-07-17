@@ -6,17 +6,25 @@ import moment from "moment";
 
 function App() {
     moment.updateLocale('en', {week: {dow: 1}});
-    const [currentYear, setCurrentYear] = useState(moment().format("YYYY"));
-    const [currentMouth, setCurrentMouth] = useState(moment().format("MMMM"))
+    const [today, setToday] = useState(moment())
 
-    const startDay = moment().startOf("month").startOf("week")
+    const startDay = today.clone().startOf("month").startOf("week")
+
+    const prevHandleClick = () => setToday(prev => prev.clone().subtract(1, 'month'));
+    const todayHandleClick = () => setToday(moment())
+    const nextHandleClick = () => setToday(prev => prev.clone().add(1, 'month'));
+
+
+
+    window.moment = moment
 
     return (
         <div className="baseStyles">
             <Header
-                currentMouth={currentMouth}
-                currentYear={currentYear}
-
+                prevHandleClick={prevHandleClick}
+                todayHandleClick={todayHandleClick}
+                nextHandleClick={nextHandleClick}
+                today={today}
             />
             <Body startDay={startDay}/>
         </div>
