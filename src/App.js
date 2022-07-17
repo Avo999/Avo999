@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import Header from "./conponents/Header";
+import Body from "./conponents/Body";
+import moment from "moment";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    moment.updateLocale('en', {week: {dow: 1}});
+    const [currentYear, setCurrentYear] = useState(moment().format("YYYY"));
+    const [currentMouth, setCurrentMouth] = useState(moment().format("MMMM"))
+
+    const startDay = moment().startOf("month").startOf("week")
+
+    return (
+        <div className="baseStyles">
+            <Header
+                currentMouth={currentMouth}
+                currentYear={currentYear}
+
+            />
+            <Body startDay={startDay}/>
+        </div>
+    );
 }
 
 export default App;
