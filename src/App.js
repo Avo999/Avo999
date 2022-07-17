@@ -26,7 +26,9 @@ function App() {
                 nextHandleClick={nextHandleClick}
                 today={today}
             />
-            <Body startDay={startDay}/>
+            <Body startDay={startDay}
+                  today={today}
+            />
         </div>
     );
 }
