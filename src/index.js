@@ -8,7 +8,8 @@ import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import {rootReducer} from "./state/reducers";
 import createSagaMiddleware from 'redux-saga';
-import sagas from './state/sagas'
+import sagas from './state/sagas';
+import 'react-toastify/dist/ReactToastify.css';
 
 const saga = createSagaMiddleware()
 

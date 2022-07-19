@@ -14,6 +14,9 @@ class Api {
     static postData(data){
         return api.post(`/events`, data)
     }
+    static updateData(data, dataId){
+        return api.patch(`/events/${dataId}`, data )
+    }
 }
 
 export default Api

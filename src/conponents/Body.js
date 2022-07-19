@@ -8,6 +8,7 @@ function Body({startDay, today, totalDays,endDayQuery,startDayQuery}) {
     const [open, setOpen] = useState(null);
     const [value , setValue] = useState("");
     const [descriptionValue, setDescriptionValue] = useState("");
+    const [dateId, setDateId] = useState(null)
     const events = useSelector(state => state.events.events);
 
 
@@ -63,9 +64,10 @@ function Body({startDay, today, totalDays,endDayQuery,startDayQuery}) {
                                         .map(event => (
                                             <div key={_.uniqueId()}
                                                  onClick={() =>{
-                                                     setValue(event.title)
-                                                     setOpen("update")
-                                                     setDescriptionValue(event.description)
+                                                     setValue(event.title);
+                                                     setOpen("update");
+                                                     setDescriptionValue(event.description);
+                                                     setDateId(event.id)
                                                  }
                                             }
                                             >{event.title}</div>
@@ -86,7 +88,9 @@ function Body({startDay, today, totalDays,endDayQuery,startDayQuery}) {
                 onSetDescriptionValue={(val) => setDescriptionValue(val)}
                 startDayQuery={startDayQuery}
                 endDayQuery={endDayQuery}
+                dateId={dateId}
             />
+
         </>
     );
 }

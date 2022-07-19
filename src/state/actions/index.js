@@ -19,3 +19,14 @@ export function postEventsRequest(data, start, end) {
         payload: {data, start, end}
     }
 }
+
+export const UPDATE_EVENTS_REQUEST = 'UPDATE_EVENTS_REQUEST';
+export const UPDATE_EVENTS_SUCCESS = 'UPDATE_EVENTS_SUCCESS';
+export const UPDATE_EVENTS_FAIL = 'UPDATE_EVENTS_FAIL';
+
+export function updateEventsRequest(data, dataId, start, end) {
+    return{
+        type: UPDATE_EVENTS_REQUEST,
+        payload: {data, dataId, start, end}
+    }
+}
