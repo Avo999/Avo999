@@ -66,4 +66,9 @@ code {
   align-items: center;
 }
 
+.input {
+  background-color: #555759;
+  outline: none;
+}
+
 /*# sourceMappingURL=index.css.map */

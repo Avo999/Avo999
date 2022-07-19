@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import {Box, Modal, Typography} from "@mui/material";
+import {Box, Button, Modal, Typography} from "@mui/material";
 import _ from 'lodash'
 import Api from "../Api";
 import * as events from "events";
@@ -21,8 +21,9 @@ const style = {
 };
 
 
-
-
+function SendIcon() {
+    return null;
+}
 
 function DayForm(props)  {
     const dispatch = useDispatch();
@@ -94,17 +95,22 @@ function DayForm(props)  {
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Add an event or reminder
                 </Typography>
-                <form onSubmit={handleSubmit} className='d-flex flex-column gap-2'>
+                <form onSubmit={handleSubmit} className='d-flex flex-column gap-3'>
                     <input type="text"
                            onChange={(e) => props.onSetValue(e.target.value)}
                            value={props.value}
+                           placeholder="Wright a title..."
+                           className='input'
                     />
                     <textarea
                               onChange={(e) => props.onSetDescriptionValue(e.target.value)}
                               value={props.descriptionValue}
-                              className='h-auto h-25'
+                              placeholder="Wright a description..."
+                              className='h-auto h-25 input'
                     />
-                    <button type='submit'>Save</button>
+                    <Button type='submit' variant="contained" endIcon={<SendIcon />}>
+                        Save
+                    </Button>
                 </form>
 
             </Box>
